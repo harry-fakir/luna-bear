@@ -1,0 +1,10 @@
+<template>
+  <div class="home">Login</div>
+</template>
+
+<script>
+export default {
+  name: "Login",
+  components: {},
+};
+</script>
