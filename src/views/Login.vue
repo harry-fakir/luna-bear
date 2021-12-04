@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex items-center justify-center min-h-screen">
       <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
-        <h2 class="text-3xl font-bold text-center">Luna Bear Gallery</h2>
         <h3 class="text-2xl font-bold text-center">Login to your account</h3>
 
-        <form action="">
+        <form action="" @submit.prevent="login">
           <div class="mt-4">
             <div>
               <label class="block" for="email">Email</label>
@@ -45,8 +44,7 @@
             </div>
             <div class="flex items-baseline justify-between">
               <button
-                @click="login"
-                type="button"
+                type="submit"
                 class="
                   px-6
                   py-2
@@ -71,6 +69,7 @@
 </template>
 
 <script>
+import store from "../store";
 export default {
   name: "Login",
   components: {},
@@ -88,17 +87,18 @@ export default {
           password: this.password,
           email: this.email,
         })
-        .then(function (response) {
-          console.log(response.data);
+        .then((response) => {
+          store.isLoggedIn = true;
+
+          this.axios.defaults.headers.common = {
+            Authorization: `Bearer ${response.data.token}`,
+            Accept: "application/json",
+          };
+          this.$router.push({ name: "Search" });
         });
     },
   },
 };
 </script>
 
-<style>
-body {
-  background-image: url("/../src/assests/css/images/mountains-1562932.jpg");
-  background-color: cadetblue;
-}
-</style>
+

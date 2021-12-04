@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex items-center justify-center min-h-screen">
       <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
-        <h2 class="text-3xl font-bold text-center">Luna Bear Gallery</h2>
         <h3 class="text-2xl font-bold text-center">Register your account</h3>
-        <form action="">
+        <form action="" @submit.prevent="signup">
           <div class="mt-4">
             <label class="block">Full Name</label>
             <input
@@ -63,8 +62,7 @@
             </div>
             <div class="flex items-baseline justify-between">
               <button
-                @click="signup"
-                type="button"
+                type="submit"
                 class="
                   px-6
                   py-2
@@ -86,6 +84,8 @@
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   name: "SignUp",
   components: {},
@@ -99,6 +99,7 @@ export default {
   methods: {
     signup() {
       console.log("im working");
+      store.isLoggedIn = true;
       this.axios
         .post("https://harry-image.jarrad.dev/api/register", {
           name: this.name,

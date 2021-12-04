@@ -3,12 +3,13 @@ import App from './App.vue'
 import '@/assets/css/tailwind.css'
 import axios from 'axios'
 import router from './router/index'
-
 import VueAxios from 'vue-axios'
+import Toasted from 'vue-toasted'
 
 Vue.use(VueAxios, axios)
+Vue.use(Toasted)
+Vue.config.productionTip = false;
 
-Vue.config.productionTip = false
 
 new Vue({
   router: router,
