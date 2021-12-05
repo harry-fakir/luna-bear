@@ -38,7 +38,7 @@
               class="
                 absolute
                 bottom-3
-                right-3
+                right-11
                 top-auto
                 left-auto
                 h-6
@@ -46,20 +46,12 @@
                 hidden
                 group-hover:block
                 cursor-pointer
+                opacity-50
+                active:opacity-100
               "
+              v-on:click="removeFavourites(image)"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                viewBox="0 0 20 20"
-                fill="#bc4749"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <button>Remove</button>
             </div>
           </div>
           <p
@@ -106,6 +98,16 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.images = response.data;
+        });
+    },
+    removeFavourites(image) {
+      this.axios
+        .delete(
+          "https://harry-image.jarrad.dev/api/favourite/" + image.id + "/remove"
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.loadFavourites();
         });
     },
   },
