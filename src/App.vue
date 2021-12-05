@@ -96,6 +96,7 @@ export default {
   @apply min-h-screen;
   background-color: #dee2e6;
 }
+#app.landing,
 #app.login,
 #app.signup {
   background-image: url("./assets/css/images/mountains-1562932.jpg");
