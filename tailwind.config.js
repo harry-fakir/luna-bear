@@ -9,6 +9,8 @@ module.exports = {
     },
   },
   variants: {
+    opacity: ['disabled'],
+    cursor: ['disabled'],
     extend: {
       opacity: ['active'],
       display: ["group-hover"],

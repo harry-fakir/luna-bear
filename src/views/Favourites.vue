@@ -75,6 +75,14 @@
         </li>
       </ul>
     </div>
+    <div>
+      <tailable-pagination
+        :data="images"
+        :showNumbers="true"
+        @page-changed="changePage"
+      >
+      </tailable-pagination>
+    </div>
   </div>
 </template>
 
@@ -85,6 +93,7 @@ export default {
   data: function () {
     return {
       images: [],
+      page: 1,
     };
   },
 
@@ -94,7 +103,7 @@ export default {
   methods: {
     loadFavourites() {
       this.axios
-        .get("https://harry-image.jarrad.dev/api/favourites", {})
+        .get("https://harry-image.jarrad.dev/api/favourites?page=" + this.page)
         .then((response) => {
           console.log(response.data);
           this.images = response.data;
@@ -109,6 +118,12 @@ export default {
           console.log(response.data);
           this.loadFavourites();
         });
+    },
+
+    changePage(page) {
+      console.log(page);
+      this.page = page;
+      this.loadFavourites();
     },
   },
 };

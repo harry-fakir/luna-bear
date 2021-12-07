@@ -4,6 +4,9 @@
       <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
         <h3 class="text-2xl font-bold text-center">Login to your account</h3>
 
+        <div v-show="error === true" class="text-red-900">
+          Incorrect details; please try again.
+        </div>
         <form action="" @submit.prevent="login">
           <div class="mt-4">
             <div>
@@ -74,11 +77,13 @@ export default {
     return {
       email: "",
       password: "",
+      error: false,
     };
   },
   methods: {
     login() {
       console.log("im working");
+      this.error = false;
       this.axios
         .post("https://harry-image.jarrad.dev/api/login", {
           password: this.password,
@@ -92,6 +97,9 @@ export default {
             Accept: "application/json",
           };
           this.$router.push({ name: "Search" });
+        })
+        .catch(() => {
+          this.error = true;
         });
     },
   },
