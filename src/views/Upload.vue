@@ -3,7 +3,17 @@
     <form
       action=""
       @submit.prevent="upload"
-      class="max-w-xl mx-auto"
+      class="
+        max-w-xl
+        mx-auto
+        bg-white
+        rounded
+        px-10
+        py-8
+        mt-5
+        text-left
+        shadow-2xl
+      "
       v-show="showUploadForm"
     >
       <input
@@ -12,7 +22,26 @@
         @change="uploadImage($event)"
         id="file-input"
         prepend-icon="mdi-camera"
-        class="mb-10"
+        class="
+          form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-700
+          rounded
+          transition
+          ease-in-out
+          mb-5
+          focus:text-gray-700
+          focus:bg-white
+          focus:border-blue-600
+          focus:outline-none
+        "
       />
       <div class="mb-5">
         <label class="block" for="imageDescription">Image Description</label>
