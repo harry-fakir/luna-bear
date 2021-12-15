@@ -5,6 +5,7 @@ import Login from '../views/Login'
 import SignUp from '../views/SignUp'
 import Search from '../views/Search'
 import Favourites from '../views/Favourites'
+import Upload from '../views/Upload'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,12 @@ const routes = [
     name: 'Favourites',
     component: Favourites
   },
+  {
+    path: '/upload',
+    name: 'Upload',
+    component: Upload
+  },
+
 
 ]
 

@@ -48,7 +48,9 @@
           <router-link to="/favourites" class="mr-5" v-show="isLoggedIn"
             >Favourites</router-link
           >
-
+          <router-link to="/upload" class="mr-5" v-show="isLoggedIn"
+            >Upload</router-link
+          >
           <a class="mr-5 cursor-pointer" v-show="isLoggedIn" v-on:click="logOut"
             >Log Out</a
           >
